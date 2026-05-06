@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jokes Viewer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-icon">😄</span>
+          <span class="logo-text">JokesViewer</span>
+        </div>
+        <div class="header-actions">
+          <button id="favToggleBtn" class="btn-icon" title="View Favorites">
+            <i class="fa-regular fa-heart"></i>
+            <span id="favCount" class="fav-badge hidden">0</span>
+          </button>
+          <button id="themeToggleBtn" class="btn-icon" title="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <span id="jokeCounter" class="joke-counter">Joke <strong>—</strong> of <strong>1465</strong></span>
+        <div class="category-badges" id="categoryBadges"></div>
+      </div>
+
+      <!-- Joke Card -->
+      <div class="card-wrapper">
+        <div class="joke-card" id="jokeCard">
+          <!-- Loading State -->
+          <div class="loading-state" id="loadingState">
+            <div class="spinner"></div>
+            <p>Fetching a joke for you…</p>
+          </div>
+
+          <!-- Error State -->
+          <div class="error-state hidden" id="errorState">
+            <span class="error-icon">😵</span>
+            <p id="errorMsg">Something went wrong. Please try again.</p>
+            <button class="btn btn-primary" id="retryBtn">
+              <i class="fa-solid fa-rotate-right"></i> Retry
+            </button>
+          </div>
+
+          <!-- Joke Content -->
+          <div class="joke-content hidden" id="jokeContent">
+            <span class="quote-mark open">"</span>
+            <p class="joke-text" id="jokeText"></p>
+            <span class="quote-mark close">"</span>
+            <div class="joke-id" id="jokeId"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button class="btn btn-secondary" id="prevBtn" disabled>
+          <i class="fa-solid fa-chevron-left"></i>
+          <span>Prev</span>
+        </button>
+
+        <div class="action-buttons">
+          <button class="btn btn-icon-label" id="copyBtn" title="Copy joke">
+            <i class="fa-regular fa-copy"></i>
+            <span>Copy</span>
+          </button>
+          <button class="btn btn-icon-label" id="favoriteBtn" title="Save to favorites">
+            <i class="fa-regular fa-heart"></i>
+            <span>Save</span>
+          </button>
+          <button class="btn btn-icon-label" id="shareBtn" title="Share joke">
+            <i class="fa-solid fa-share-nodes"></i>
+            <span>Share</span>
+          </button>
+        </div>
+
+        <button class="btn btn-primary" id="nextBtn">
+          <span>Next</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </main>
+
+    <!-- Favorites Panel -->
+    <div class="overlay hidden" id="favOverlay"></div>
+    <aside class="favorites-panel hidden" id="favoritesPanel">
+      <div class="panel-header">
+        <h2><i class="fa-solid fa-heart"></i> Saved Jokes</h2>
+        <button class="btn-icon" id="closeFavBtn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="panel-body" id="favoritesList">
+        <div class="empty-fav">
+          <span>🤷</span>
+          <p>No saved jokes yet.<br />Hit the heart on any joke!</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Toast Notification -->
+    <div class="toast hidden" id="toast"></div>
+
+    <footer class="footer">
+      <p>Powered by <a href="https://freeapi.app" target="_blank" rel="noopener">FreeAPI.app</a></p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
